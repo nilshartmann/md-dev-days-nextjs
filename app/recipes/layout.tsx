@@ -18,7 +18,7 @@ export default function RecipesLayout({ children }: RecipesLayoutProps) {
         >
           <BreakingNews>
             Chef’s tip of the day: Master the art of seasoning. +++ Explore our
-            latest collection of vegetarian recipes +++ The +++ Now trending:
+            latest collection of vegetarian recipes +++ Now trending:
             Plant-based meals everyone will love +++ Newest dishes to impress at
             your next dinner party
           </BreakingNews>
@@ -26,7 +26,6 @@ export default function RecipesLayout({ children }: RecipesLayoutProps) {
       </RecipesHeader>
       <main className={"flex flex-grow flex-col justify-center"}>
         {children}
-        {/*<Suspense fallback={<GlobalLoadingIndicator />}>{children}</Suspense>*/}
       </main>
     </>
   );

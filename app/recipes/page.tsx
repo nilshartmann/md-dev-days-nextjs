@@ -1,15 +1,11 @@
 import { fetchRecipes } from "@/app/components/queries.ts";
 import RecipeList from "@/app/components/recipelistpage/RecipeList.tsx";
+import { H1 } from "@/app/components/Heading.tsx";
 
-type RecipeListPageProps = {
-  searchParams: Promise<{ page?: number }>;
-};
-
-export default async function RecipeListPage({
-  searchParams,
-}: RecipeListPageProps) {
-  const { page } = await searchParams;
-  const recipes = await fetchRecipes(page);
-
-  return <RecipeList recipes={recipes} />;
+export default async function RecipeListPage() {
+  return (
+    <div className={"mx-auto"}>
+      <H1>👨‍🏫 TODO: implementieren!</H1>
+    </div>
+  );
 }
