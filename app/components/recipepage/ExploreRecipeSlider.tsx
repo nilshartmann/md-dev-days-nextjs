@@ -1,13 +1,13 @@
 "use client";
 
-import { use, useState } from "react";
+import { ReactNode, use, useState } from "react";
 
 import { ExploreRecipeDto } from "@/app/components/api-types.ts";
 import ExploreRecipeBox from "@/app/components/recipepage/ExploreRecipeBox.tsx";
 import { ArrowButton } from "@/app/components/Button.tsx";
 
 type ExploreRecipesProps = {
-  exploreRecipesPromise: Promise<ExploreRecipeDto[]>;
+  exploreRecipesPromise: Promise<ReactNode[]>;
 };
 
 export default function ExploreRecipeSlider({
@@ -37,7 +37,7 @@ export default function ExploreRecipeSlider({
       >
         <ArrowButton direction={"left"} />
       </button>
-      <ExploreRecipeBox recipe={recipe} />
+      {recipe}
       <button
         onClick={() => handleClick(+1)}
         className={"absolute right-2 top-2"}

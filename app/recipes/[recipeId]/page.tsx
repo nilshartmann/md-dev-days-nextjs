@@ -6,6 +6,7 @@ import { SidebarBox } from "@/app/components/SidebarBox.tsx";
 import ExploreRecipeSlider from "@/app/components/recipepage/ExploreRecipeSlider.tsx";
 import { Suspense } from "react";
 import LoadingIndicator from "@/app/components/LoadingIndicator.tsx";
+import ExploreRecipeBox from "@/app/components/recipepage/ExploreRecipeBox.tsx";
 
 // -----------------------
 //  rpage
@@ -24,7 +25,10 @@ export default async function RecipePage({ params }: RecipePageProps) {
   const { recipeId } = await params;
 
   // KEIN WASSER FALL MEHR, DAFÜR GLOBAL LOADING INDICATOR
-  const exploreRecipesPromise = fetchExploreRecipes(recipeId);
+  // JETZT WIRD ExploreRecipeBox zur SERVER COMPONENT!
+  const exploreRecipesPromise = fetchExploreRecipes(recipeId).then((recipes) =>
+    recipes.map((r) => <ExploreRecipeBox key={r.id} recipe={r} />),
+  );
 
   const recipe = await fetchRecipe(recipeId);
   if (!recipe) {
