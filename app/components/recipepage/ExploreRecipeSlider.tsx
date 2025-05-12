@@ -7,13 +7,13 @@ import ExploreRecipeBox from "@/app/components/recipepage/ExploreRecipeBox.tsx";
 import { ArrowButton } from "@/app/components/Button.tsx";
 
 type ExploreRecipesProps = {
-  exploreRecipesPromise: Promise<ExploreRecipeDto[]>;
+  exploreRecipes: ExploreRecipeDto[];
 };
 
 export default function ExploreRecipeSlider({
-  exploreRecipesPromise,
+  exploreRecipes,
 }: ExploreRecipesProps) {
-  const recipes = use(exploreRecipesPromise);
+  const recipes = exploreRecipes;
   const [selected, setSelected] = useState(0);
 
   const recipe = recipes[selected];

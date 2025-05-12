@@ -9,16 +9,11 @@ type LikesWidgetProps = {
 
 export function LikesWidget({ recipe }: LikesWidgetProps) {
   async function handleSubmit() {
-    "use server";
-    await saveLike(recipe.id);
-
-    // Next.js-Cache invalidieren
-    revalidatePath("/recipes");
-    revalidatePath(`/recipes/${recipe.id}`);
+    console.log("todo: IMPLEMENT LIKE FORM SUBMIT", recipe.id);
   }
 
   return (
-    <form action={handleSubmit} className={"inline-block"}>
+    <form className={"inline-block"}>
       <LikeButton likes={recipe.likes} />
     </form>
   );

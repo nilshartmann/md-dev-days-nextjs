@@ -18,7 +18,7 @@ export default async function RecipeList({ recipes }: RecipeListProps) {
           );
         })}
       </div>
-      <RecipeListPaginationBar pageable={recipes} />
+      {/*<RecipeListPaginationBar pageable={recipes} />*/}
     </>
   );
 }

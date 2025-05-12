@@ -26,7 +26,7 @@ export default function RootLayout({
         <link href="/fontawesome/css/solid.css" rel="stylesheet" />
         <title>Recipify Next.js Demo</title>
       </head>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className={"overflow-y-scroll"}>
         <div className={"flex min-h-svh flex-col"}>
           <div className={"container mx-auto h-16"}>
             <div className={"flex h-full items-center justify-between"}>
