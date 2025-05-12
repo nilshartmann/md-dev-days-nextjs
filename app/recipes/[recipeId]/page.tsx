@@ -4,6 +4,8 @@ import RecipePageLayout from "@/app/components/recipepage/RecipePageLayout.tsx";
 import { fetchExploreRecipes, fetchRecipe } from "@/app/components/queries.ts";
 import { SidebarBox } from "@/app/components/SidebarBox.tsx";
 import ExploreRecipeSlider from "@/app/components/recipepage/ExploreRecipeSlider.tsx";
+import { Suspense } from "react";
+import LoadingIndicator from "@/app/components/LoadingIndicator.tsx";
 
 // -----------------------
 //  rpage
@@ -21,8 +23,8 @@ type RecipePageProps = {
 export default async function RecipePage({ params }: RecipePageProps) {
   const { recipeId } = await params;
 
-  // WASSERFALL KÜMMERN WIR UNS SPÄTER
-  const exploreRecipes = await fetchExploreRecipes(recipeId);
+  // KEIN WASSER FALL MEHR, DAFÜR GLOBAL LOADING INDICATOR
+  const exploreRecipesPromise = fetchExploreRecipes(recipeId);
 
   const recipe = await fetchRecipe(recipeId);
   if (!recipe) {
@@ -34,7 +36,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
       recipe={recipe.recipe}
       sidebar={
         <SidebarBox title={"Explore"}>
-          <ExploreRecipeSlider exploreRecipes={exploreRecipes} />
+          <ExploreRecipeSlider exploreRecipesPromise={exploreRecipesPromise} />
         </SidebarBox>
       }
     />

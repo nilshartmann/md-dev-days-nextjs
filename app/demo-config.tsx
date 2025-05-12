@@ -2,7 +2,9 @@
 
 export const slowDown_IncreaseLikes = 1200;
 export const slowDown_GetFeedbacks = 0;
-export const slowDown_GetExploreRecipes = 0;
+
+// Jetzt ist unser globaler Loading Indikator zurück... :-(
+export const slowDown_GetExploreRecipes = 1200;
 export const slowDown_GetRecipe = 0;
 
 // Für Request-Demo auf 0 setzen:
