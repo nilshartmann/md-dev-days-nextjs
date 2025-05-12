@@ -36,7 +36,11 @@ export default async function RecipePage({ params }: RecipePageProps) {
       recipe={recipe.recipe}
       sidebar={
         <SidebarBox title={"Explore"}>
-          <ExploreRecipeSlider exploreRecipesPromise={exploreRecipesPromise} />
+          <Suspense fallback={<LoadingIndicator />}>
+            <ExploreRecipeSlider
+              exploreRecipesPromise={exploreRecipesPromise}
+            />
+          </Suspense>
         </SidebarBox>
       }
     />
