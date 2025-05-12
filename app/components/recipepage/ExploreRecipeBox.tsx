@@ -8,6 +8,9 @@ type ExploreRecipeBoxProps = {
 };
 
 export default function ExploreRecipeBox({ recipe }: ExploreRecipeBoxProps) {
+  // WO WIRD DIESE KOMPONENTE GERENDERT?
+  console.log("ExploreRecipeBox", new Date().toLocaleTimeString());
+
   return (
     <div
       className={"border-teal rounded-lg"}
