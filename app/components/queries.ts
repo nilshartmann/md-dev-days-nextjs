@@ -9,11 +9,11 @@ import {
 } from "@/app/components/fetch-from-api.ts";
 import {
   recipesPerPage,
-  slowDown_AddFeedback,
+  slowDown_AddFeedback, slowDown_GetExploreRecipes,
   slowDown_GetFeedbacks,
   slowDown_GetRecipe,
   slowDown_GetRecipeList,
-  slowDown_IncreaseLikes,
+  slowDown_IncreaseLikes
 } from "@/app/demo-config.tsx";
 
 export function fetchRecipes(
@@ -71,6 +71,20 @@ export function fetchFeedback(recipeId: string) {
       },
       query: {
         slowdown: slowDown_GetFeedbacks,
+      },
+    },
+  );
+}
+
+export function fetchExploreRecipes(recipeId: string) {
+  return fetchFromApi(
+    getEndpointConfig("get", "/api/recipes/{recipeId}/explore"),
+    {
+      path: {
+        recipeId,
+      },
+      query: {
+        slowdown: slowDown_GetExploreRecipes,
       },
     },
   );

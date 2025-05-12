@@ -10,7 +10,7 @@ export default function RecipesLayout({ children }: RecipesLayoutProps) {
   return (
     <>
       <RecipesHeader>{<Timer />}</RecipesHeader>
-      <main className={"flex flex-grow flex-col"}>
+      <main className={"flex flex-grow flex-col justify-center"}>
         {children}
         {/*<Suspense fallback={<GlobalLoadingIndicator />}>{children}</Suspense>*/}
       </main>

@@ -6,11 +6,7 @@ type SidebarProps = {
 
 export function Sidebar({ children }: SidebarProps) {
   return (
-    <div
-      className={
-        "border-1 mt-8 w-full space-y-8 rounded-2xl bg-goldgray p-8 md:mt-0"
-      }
-    >
+    <div className={"border-1 mt-8 w-full space-y-8 rounded-2xl bg-goldgray"}>
       {children}
     </div>
   );

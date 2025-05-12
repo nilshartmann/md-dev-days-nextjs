@@ -91,3 +91,25 @@ export function PageButton({ state: { state, label } }: PageButtonProps) {
   );
   return <span className={buttonClassName}>{label}</span>;
 }
+
+type ArrowButtonProps = {
+  disabled?: boolean;
+  direction: "left" | "right";
+};
+export function ArrowButton({ direction, disabled }: ArrowButtonProps) {
+  const buttonClassName = twMerge(
+    "inline-flex items-center justify-center rounded-full px-2 py-2 text-gray-700 transition-all duration-500 ease-in-out",
+    disabled
+      ? "cursor-default bg-gray-300 hover:bg-gray-300"
+      : "cursor-pointer bg-goldgray hover:bg-gray-700 hover:text-white",
+  );
+  return (
+    <span className={buttonClassName}>
+      {direction === "left" ? (
+        <i className="fa-solid fa-arrow-left"></i>
+      ) : (
+        <i className="fa-solid fa-arrow-right"></i>
+      )}
+    </span>
+  );
+}

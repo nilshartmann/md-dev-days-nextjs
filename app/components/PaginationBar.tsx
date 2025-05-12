@@ -14,7 +14,7 @@ type PaginationBarProps = {
   children: (label: PageLabel) => ReactNode;
 };
 
-export default async function PaginationBar({
+export default function PaginationBar({
   totalPages,
   currentPage = 0,
   children,

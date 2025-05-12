@@ -171,13 +171,6 @@ export const ExploreRecipeDto = z.object({
   mealType: z.string(),
 });
 
-export type GetExploreRecipesResponse = z.infer<
-  typeof GetExploreRecipesResponse
->;
-export const GetExploreRecipesResponse = z.object({
-  exploreRecipes: z.array(ExploreRecipeDto),
-});
-
 export type get_GetFeedbacks = typeof get_GetFeedbacks;
 export const get_GetFeedbacks = {
   method: z.literal("GET"),
@@ -342,7 +335,7 @@ export const get_GetExploreRecipes = {
       recipeId: z.string(),
     }),
   }),
-  response: GetExploreRecipesResponse,
+  response: z.array(ExploreRecipeDto),
 };
 
 // <EndpointByMethod>

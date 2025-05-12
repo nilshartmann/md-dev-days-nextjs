@@ -2,6 +2,7 @@
 
 export const slowDown_IncreaseLikes = 0;
 export const slowDown_GetFeedbacks = 0;
+export const slowDown_GetExploreRecipes = 0;
 export const slowDown_GetRecipe = 0;
 
 // Für Request-Demo auf 0 setzen:
@@ -13,7 +14,7 @@ export const slowDown_search = 0;
 export const enableTanstackQueryDevTools = false;
 
 /** number of recipes on /recipes */
-export const recipesPerPage = 6;
+export const recipesPerPage = 3;
 
 /** slowdown reading of /recipes */
 export const slowDown_GetRecipeList = 0;

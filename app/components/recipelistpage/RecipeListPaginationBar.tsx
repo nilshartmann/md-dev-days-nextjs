@@ -1,20 +1,21 @@
+"use client";
 import PaginationBar from "@/app/components/PaginationBar.tsx";
 import { PageButton } from "@/app/components/Button.tsx";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 type RecipeListPaginationBarProps = {
   pageable: {
     totalPages: number;
   };
-  params: Record<string, string>;
 };
 
 export default function RecipeListPaginationBar({
   pageable,
-  params,
 }: RecipeListPaginationBarProps) {
+  const searchParams = useSearchParams();
   const totalPages = pageable.totalPages; // pageCountPromise.then((t) => t.totalPages);
-  const currentPage = parseInt(params.page || "0");
+  const currentPage = parseInt(searchParams.get("page") || "0");
 
   return (
     <div className={"mt-8 flex justify-center"}>
@@ -23,7 +24,7 @@ export default function RecipeListPaginationBar({
           btn.disabled ? (
             <PageButton state={btn} />
           ) : (
-            <Link href={buildUrl("/recipes", { ...params, page: btn.page })}>
+            <Link href={"/recipes?page=" + btn.page}>
               <PageButton state={btn} />
             </Link>
           )
