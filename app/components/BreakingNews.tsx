@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+"use client";
+import { ReactNode, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { Marquee } from "@/app/components/Marquee.tsx";
 import { showBreakingNews } from "@/app/demo-config.tsx";
@@ -8,7 +9,11 @@ interface BreakingNewsProps {
 }
 
 export default function BreakingNews({ children }: BreakingNewsProps) {
-  const [visible] = [showBreakingNews];
+  // Obwohl das jetzt eine CLIENT-Komponente ist, wird
+  // die Komponente auch auf dem Server gerendert (SSR)
+  //   -> die Darstellung würde also auch ohne JS funktionieren,
+  //      man kann die Komponente "nur" nicht mehr ausschalten
+  const [visible, setVisible] = useState(true);
 
   return (
     <div className={"flex"}>
@@ -21,7 +26,10 @@ export default function BreakingNews({ children }: BreakingNewsProps) {
           {children}
         </Marquee>
       )}
-      <button className={twMerge("cursor", visible ? "ms-4" : "rounded-lg")}>
+      <button
+        onClick={() => setVisible(!visible)}
+        className={twMerge("cursor", visible ? "ms-4" : "rounded-lg")}
+      >
         {visible ? (
           <i className="fa-regular fa-circle-xmark" />
         ) : (
