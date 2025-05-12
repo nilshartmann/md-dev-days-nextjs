@@ -9,11 +9,12 @@ import {
 } from "@/app/components/fetch-from-api.ts";
 import {
   recipesPerPage,
-  slowDown_AddFeedback, slowDown_GetExploreRecipes,
+  slowDown_AddFeedback,
+  slowDown_GetExploreRecipes,
   slowDown_GetFeedbacks,
   slowDown_GetRecipe,
   slowDown_GetRecipeList,
-  slowDown_IncreaseLikes
+  slowDown_IncreaseLikes,
 } from "@/app/demo-config.tsx";
 
 export function fetchRecipes(

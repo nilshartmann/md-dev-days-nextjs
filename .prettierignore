@@ -21,3 +21,4 @@ public/images/
 routeTree.gen.ts
 
 docker-compose.yaml
+next.config.mjs

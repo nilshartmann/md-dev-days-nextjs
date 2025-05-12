@@ -26,20 +26,17 @@ export default function RootLayout({
         <title>Recipify Next.js Demo</title>
       </head>
       <body suppressHydrationWarning>
-        <RecipifyQueryProvider>
-          <div className={"flex min-h-svh flex-col"}>
-            <div className={"container mx-auto h-16"}>
-              <div className={"flex h-full items-center justify-between"}>
-                <GlobalNavBar />
-                <NewsletterRegistration />
-              </div>
+        <div className={"flex min-h-svh flex-col"}>
+          <div className={"container mx-auto h-16"}>
+            <div className={"flex h-full items-center justify-end"}>
+              <NewsletterRegistration />
             </div>
-
-            {children}
-
-            <Footer />
           </div>
-        </RecipifyQueryProvider>
+
+          {children}
+
+          <Footer />
+        </div>
       </body>
     </html>
   );
