@@ -1,13 +1,14 @@
 import { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import { Marquee } from "@/app/components/Marquee.tsx";
+import { showBreakingNews } from "@/app/demo-config.tsx";
 
 interface BreakingNewsProps {
   children: ReactNode;
 }
 
 export default function BreakingNews({ children }: BreakingNewsProps) {
-  const [visible] = [false];
+  const [visible] = [showBreakingNews];
 
   return (
     <div className={"flex"}>

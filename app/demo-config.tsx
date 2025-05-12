@@ -10,6 +10,8 @@ export const debounce_search = 0;
 
 export const slowDown_search = 0;
 
+export const showBreakingNews = false;
+
 // //////////////////////////////////////////////////////
 export const enableTanstackQueryDevTools = false;
 
