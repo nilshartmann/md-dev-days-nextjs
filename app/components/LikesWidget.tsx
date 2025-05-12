@@ -9,11 +9,20 @@ type LikesWidgetProps = {
 
 export function LikesWidget({ recipe }: LikesWidgetProps) {
   async function handleSubmit() {
+    "use server";
+
     console.log("todo: IMPLEMENT LIKE FORM SUBMIT", recipe.id);
+
+    // WAS PASSIERT, WENN WIR JAVASCRIPT AUSSCHALTEN????
+
+    await saveLike(recipe.id);
+
+    revalidatePath("/recipes");
+    revalidatePath(`/recipes/${recipe.id}`);
   }
 
   return (
-    <form className={"inline-block"}>
+    <form className={"inline-block"} action={handleSubmit}>
       <LikeButton likes={recipe.likes} />
     </form>
   );
