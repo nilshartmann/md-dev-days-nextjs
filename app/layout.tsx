@@ -30,15 +30,29 @@ export default function RootLayout({
         <div className={"flex min-h-svh flex-col"}>
           <div className={"container mx-auto h-16"}>
             <div className={"flex h-full items-center justify-between"}>
-              <Link
-                href={"/"}
-                prefetch={false}
-                className={
-                  "cursor-pointer text-gray-900 transition-all duration-500 ease-in-out hover:text-gray-400"
-                }
-              >
-                <i className="fa-solid fa-house"></i>
-              </Link>
+              <div className={"flex items-center justify-start gap-x-4"}>
+                <Link
+                  href={"/"}
+                  prefetch={false}
+                  className={
+                    "cursor-pointer text-gray-900 transition-all duration-500 ease-in-out hover:text-gray-400"
+                  }
+                >
+                  <i className="fa-solid fa-house"></i>
+                </Link>
+                <a
+                  href={"https://www.md-devdays.de/home"}
+                  target={"_blank"}
+                  className={
+                    "ms-4 h-4 w-4 cursor-pointer text-gray-900 transition-all duration-500 ease-in-out hover:text-gray-400"
+                  }
+                >
+                  <img
+                    src={"/images/md-dev-days.svg"}
+                    alt={"Magdeburg Dev Days"}
+                  />
+                </a>
+              </div>
               <NewsletterRegistration />
             </div>
           </div>

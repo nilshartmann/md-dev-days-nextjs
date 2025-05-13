@@ -25,16 +25,16 @@ export default function IngredientsSection({ ingredients }: IngredientsProps) {
             "rounded-lg border border-dotted border-gray-500 p-4 text-lg"
           }
         >
-          <IconButton
-            icon={"plus"}
-            onButtonClick={() => setServings(servings + 1)}
-          />
+          {/*<IconButton*/}
+          {/*  icon={"plus"}*/}
+          {/*  onButtonClick={() => setServings(servings + 1)}*/}
+          {/*/>*/}
           <span className={"text-gray-500"}> {servings} servings </span>
-          <IconButton
-            icon={"minus"}
-            disabled={servings === 1}
-            onButtonClick={() => setServings(servings - 1)}
-          />
+          {/*<IconButton*/}
+          {/*  icon={"minus"}*/}
+          {/*  disabled={servings === 1}*/}
+          {/*  onButtonClick={() => setServings(servings - 1)}*/}
+          {/*/>*/}
         </div>
       </div>
       <IngredientList ingredients={ingredients} servings={servings} />

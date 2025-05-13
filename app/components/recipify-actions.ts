@@ -1,20 +1,42 @@
 "use server";
-
-import {
-  fetchFromApi,
-  getEndpointConfig,
-} from "@/app/components/fetch-from-api.ts";
+import crypto from "crypto";
 import { slowDown_SubscribeNewsletter } from "@/app/demo-config.tsx";
 
-export async function subscribeToNewsletter(email: string) {
-  await fetchFromApi(getEndpointConfig("post", "/api/newsletter/subscribe"), {
-    body: {
-      email,
-    },
-    query: {
-      slowdown: slowDown_SubscribeNewsletter,
-    },
-  });
+function uniqueId() {
+  return crypto.randomUUID();
+}
 
-  // assume this always works
+type NewsletterFormState = {
+  email?: string;
+  requestId?: string;
+  status?: "Subscribed!" | "Error" | null;
+};
+
+export async function subscribeToNewsletter(
+  _prevState: NewsletterFormState,
+  formData: FormData,
+): Promise<NewsletterFormState> {
+  // SIMULATE A SLOW REQUEST
+  //  No real backend is involved here
+  //  This example doesn't care about error handling etc.
+
+  await new Promise((res) =>
+    setTimeout(() => res("Subscribed"), slowDown_SubscribeNewsletter),
+  );
+
+  const email = formData.get("email") as string;
+
+  if (email.length < 4) {
+    return {
+      requestId: uniqueId(),
+      email,
+      status: "Error",
+    };
+  }
+
+  return {
+    requestId: uniqueId(),
+    email: "",
+    status: "Subscribed!",
+  };
 }

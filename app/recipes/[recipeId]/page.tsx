@@ -1,12 +1,18 @@
 import { notFound } from "next/navigation";
 
 import RecipePageLayout from "@/app/components/recipepage/RecipePageLayout.tsx";
-import { fetchExploreRecipes, fetchRecipe } from "@/app/components/queries.ts";
+import {
+  fetchExploreRecipes,
+  fetchFeedback,
+  fetchRecipe,
+} from "@/app/components/queries.ts";
 import { SidebarBox } from "@/app/components/SidebarBox.tsx";
 import ExploreRecipeSlider from "@/app/components/recipepage/ExploreRecipeSlider.tsx";
 import { Suspense } from "react";
 import LoadingIndicator from "@/app/components/LoadingIndicator.tsx";
 import ExploreRecipeBox from "@/app/components/recipepage/ExploreRecipeBox.tsx";
+import FeedbackList from "@/app/components/recipepage/FeedbackList.tsx";
+import { AddFeedbackForm } from "@/app/components/recipepage/FeedbackForm.tsx";
 
 // -----------------------
 //  rpage
@@ -24,6 +30,8 @@ type RecipePageProps = {
 export default async function RecipePage({ params }: RecipePageProps) {
   const { recipeId } = await params;
 
+  const feedbackPromise = fetchFeedback(recipeId);
+
   // KEIN WASSER FALL MEHR, DAFÜR GLOBAL LOADING INDICATOR
   // JETZT WIRD ExploreRecipeBox zur SERVER COMPONENT!
   const exploreRecipesPromise = fetchExploreRecipes(recipeId).then((recipes) =>
@@ -39,13 +47,21 @@ export default async function RecipePage({ params }: RecipePageProps) {
     <RecipePageLayout
       recipe={recipe.recipe}
       sidebar={
-        <SidebarBox title={"Explore"}>
-          <Suspense fallback={<LoadingIndicator />}>
-            <ExploreRecipeSlider
-              exploreRecipesPromise={exploreRecipesPromise}
-            />
-          </Suspense>
-        </SidebarBox>
+        <>
+          <SidebarBox title={"Explore more"}>
+            <Suspense fallback={<LoadingIndicator />}>
+              <ExploreRecipeSlider
+                exploreRecipesPromise={exploreRecipesPromise}
+              />
+            </Suspense>
+          </SidebarBox>
+          <SidebarBox title={"Feedback"}>
+            <Suspense fallback={<LoadingIndicator />}>
+              <FeedbackList feedbackPromise={feedbackPromise} />
+              <AddFeedbackForm recipeId={recipeId} />
+            </Suspense>
+          </SidebarBox>
+        </>
       }
     />
   );

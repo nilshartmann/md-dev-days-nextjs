@@ -29,21 +29,5 @@ export default function ExploreRecipeSlider({
     );
   };
 
-  return (
-    <div className={"transform"}>
-      <button
-        className={"absolute left-2 top-2 z-10"}
-        onClick={() => handleClick(-1)}
-      >
-        <ArrowButton direction={"left"} />
-      </button>
-      {recipe}
-      <button
-        onClick={() => handleClick(+1)}
-        className={"absolute right-2 top-2"}
-      >
-        <ArrowButton direction={"right"} />
-      </button>
-    </div>
-  );
+  return <div className={"transform"}>{recipe}</div>;
 }
