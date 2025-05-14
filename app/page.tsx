@@ -38,7 +38,9 @@ export default function LandingPage() {
           </p>
         </div>
         <div className="mt-10 flex justify-center">
-          <Button size={"lg"}>Let me in - I'm hungry! 😋</Button>
+          <Link href={"/recipes"}>
+            <Button size={"lg"}>Let me in - I'm hungry! 😋</Button>
+          </Link>
         </div>
         <div className={"mt-10 flex justify-center space-x-8"}>
           <Button>

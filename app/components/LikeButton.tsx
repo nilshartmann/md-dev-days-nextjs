@@ -1,13 +1,15 @@
+"use client";
 import { twMerge } from "tailwind-merge";
 import { LikeLoadingIndicator } from "@/app/components/LoadingIndicator.tsx";
 import LikeIcon from "@/app/components/LikeIcon.tsx";
+import { useFormStatus } from "react-dom";
 
 type LikeButtonProps = {
   likes: number;
 };
 
 export default function LikeButton({ likes }: LikeButtonProps) {
-  const { pending } = { pending: false };
+  const { pending } = useFormStatus();
   return (
     <button
       type={"submit"}

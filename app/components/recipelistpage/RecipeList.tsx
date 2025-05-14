@@ -6,7 +6,7 @@ type RecipeListProps = {
   recipes: PageResponseRecipeDto;
 };
 
-export default async function RecipeList({ recipes }: RecipeListProps) {
+export default function RecipeList({ recipes }: RecipeListProps) {
   return (
     <>
       <div className="container mx-auto mt-2 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
